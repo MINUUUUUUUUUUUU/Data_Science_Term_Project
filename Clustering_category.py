@@ -4,11 +4,12 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
 # Load the regression results(you should change to your own csv file directory)
-df = pd.read_csv("C:/Users/user/Desktop/Term_project/regression_results.csv")
-df = df.fillna({"Correlation_Video_Count": 0, "Correlation_Average_View_Count": 0})
+df = pd.read_csv("regression_results.csv")
+df = df.fillna({"Correlation_Video_Count": 0,
+               "Correlation_Average_View_Count": 0})
 
 
-#Feature explanation-> Correlation_Video_Count: Regression of Subscribers & Total Video amount
+# Feature explanation-> Correlation_Video_Count: Regression of Subscribers & Total Video amount
 #                      Correlation_Average_View_Count: Regression of Subscribers & Recent 10 Videos' average View
 features = ["Correlation_Video_Count", "Correlation_Average_View_Count"]
 
@@ -35,7 +36,8 @@ for i in range(k):
     print(df.loc[df["Cluster"] == i, features].mean())
 
 # Plot the clusters
-plt.scatter(df["Correlation_Average_View_Count"], df["Correlation_Video_Count"], c=df["Cluster"])
+plt.scatter(df["Correlation_Average_View_Count"],
+            df["Correlation_Video_Count"], c=df["Cluster"])
 plt.xlabel("Correlation_Average_View_Count")
 plt.ylabel("Correlation_Video_Count")
 plt.show()
